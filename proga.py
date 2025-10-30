@@ -22,6 +22,7 @@ def flag(o):
             print(f'{WHITE}{line*(lenght//3-k)}{JPNRED}{line*(lenght//3+2*k)}{WHITE}{line*(lenght//3-k)}{END}')
             k-=lenght//lenght
         else: print(f'{WHITE}{line*lenght}{END}')
+    print('\n')
 
 def flag2(o):
     height = lenght = o*3
@@ -43,7 +44,7 @@ def flag3(o):
             print(f'{WHITE}{line*height}{END}')
 
 def drawG(ID=231):
-    print(f'\x1b[H')
+    print(f'\u001b[{22};{0}H')
     color = f'\x1B[48;5;{ID}m'
     height = 15
     center = height//2
@@ -59,10 +60,41 @@ def drawG(ID=231):
         else:
             offset+=2
             step-=2
-    time.sleep(0.1)
+    time.sleep(0.3)
     
 
 
-for ID in range(255):
+def genfunc():
+    step = 3
+    height = 15
+    k = 19
+    j = 11
+    print('y = 3x')
+    print(f'Step is {step}')
+    for i in range(height,-1,-1):
+        print(f'{i*step}{'\u001b[10G'}{'---'*16}')
+    print('\u001b[9G',end='')
+    for i in range(16):
+        if i < 10:
+            print(' ',i,end='')
+        else:
+            print('',i,end='')
+    print('\n')
+    for x in range(height+1):
+        print(f'\u001b[{k};{j}H/')
+        k-=1
+        j+=3
+    print(f'\u001b[{22};{10}H')
+        
 
+genfunc()
+
+
+
+for ID in range(10):
     drawG(ID)
+    print('\n')
+
+flag(4)
+
+print('\n')
