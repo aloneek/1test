@@ -129,8 +129,8 @@ def fil():
         list.append(float(line))
         if float(line) != 5 and float(line) <= 0: list2.append(float(line)) 
     print(list[3:10])
-    print(f'just list           {'-'*(len(list)//3)}\u001b[110G{len(list)}')
-    print(f'list with condition {'-'*(len(list2)//3)}\u001b[110G{len(list2)}')
+    print(f'just list           {'-'*(len(list)//3)}\u001b[110G{len(list)*100/len(list)}%')
+    print(f'list with condition {'-'*(len(list2)//3)}\u001b[110G{len(list2)*100/len(list)}%')
 
 
 
