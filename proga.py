@@ -87,6 +87,15 @@ def genfunc():
     print(f'\u001b[{22};{10}H')
         
 def getfunction():
+    plot_list = [[0 for i in range(10)] for i in range(10)]
+    result = [0 for i in range(10)]
+
+    for i in range(10):
+        result[i] = i * 3
+
+    step = round(abs(result[0] - result[9]) / 9, 2)
+    
+    print(f'func is y = 3x\nstep is {step}')
     for i in range(10):
         for j in range(10):
             if j == 0:
@@ -110,6 +119,7 @@ def getfunction():
                 line += '!!'
         print(line)
     print('\t0\t1 2 3 4 5 6 7 8 9')
+    
 
 def fil():
     file = open ('sequence.txt', 'r')
@@ -119,15 +129,10 @@ def fil():
         list.append(float(line))
         if float(line) != 5 and float(line) <= 0: list2.append(float(line)) 
     print(list[3:10])
+    print(f'just list           {'-'*(len(list)//3)}\u001b[110G{len(list)}')
+    print(f'list with condition {'-'*(len(list2)//3)}\u001b[110G{len(list2)}')
 
-    plot_list = [[0 for i in range(10)] for i in range(10)]
-    result = [0 for i in range(10)]
 
-    for i in range(10):
-        result[i] = i * 3
-
-    step = round(abs(result[0] - result[9]) / 9, 2)
-    print(step)
 
 
 
@@ -139,6 +144,9 @@ for ID in range(10):
 
 flag(4)
 
+getfunction()
+
+fil()
 print('\n')
 
 
