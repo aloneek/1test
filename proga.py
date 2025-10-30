@@ -86,10 +86,52 @@ def genfunc():
         j+=3
     print(f'\u001b[{22};{10}H')
         
+def getfunction():
+    for i in range(10):
+        for j in range(10):
+            if j == 0:
+                plot_list[i][j] = step * (8-i) + step
+
+    for i in range(9):
+        for j in range(10):
+            if abs(plot_list[i][0] - result[9 - j]) < step:
+                for k in range(9):
+                    if 8 - k == j:
+                        plot_list[i][k+1] = 1
+
+    for i in range(9):
+        line = ''
+        for j in range(10):
+            if j == 0:
+                line += '\t' + str(int(plot_list[i][j])) + '\t'
+            if plot_list[i][j] == 0:
+                line += '--'
+            if plot_list[i][j] == 1:
+                line += '!!'
+        print(line)
+    print('\t0\t1 2 3 4 5 6 7 8 9')
+
+def fil():
+    file = open ('sequence.txt', 'r')
+    list = []
+    list2 = []
+    for line in file:
+        list.append(float(line))
+        if float(line) != 5 and float(line) <= 0: list2.append(float(line)) 
+    print(list[3:10])
+
+    plot_list = [[0 for i in range(10)] for i in range(10)]
+    result = [0 for i in range(10)]
+
+    for i in range(10):
+        result[i] = i * 3
+
+    step = round(abs(result[0] - result[9]) / 9, 2)
+    print(step)
+
+
 
 genfunc()
-
-
 
 for ID in range(10):
     drawG(ID)
@@ -98,3 +140,5 @@ for ID in range(10):
 flag(4)
 
 print('\n')
+
+
